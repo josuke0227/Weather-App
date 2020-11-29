@@ -5,7 +5,7 @@ const FlexContainer = styled.div`
   flex-direction: ${(props) =>
     props.direction === "column" ? "column" : "row"};
   align-items: ${(props) => props.xAlign && "center"};
-  justify-content: ${(props) => props.yEnd && "flex-end"};
+  justify-items: ${(props) => props.yAlign && "center"};
 `;
 
 export default FlexContainer;
