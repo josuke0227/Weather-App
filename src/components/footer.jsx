@@ -1,9 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const FooterContainer = styled.div`
-  text-align: center;
-`;
+const FooterContainer = styled.div``;
 
 const FooterText = styled.div`
   display: inline;
@@ -13,9 +11,9 @@ const FooterText = styled.div`
 
 const Footer = () => {
   return (
-    <FooterContainer>
+    <div className="footer-container mt-1">
       <FooterText>Josuke0227 @ DevChallenges.io</FooterText>
-    </FooterContainer>
+    </div>
   );
 };
 

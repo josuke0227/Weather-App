@@ -4,24 +4,22 @@ import DateIndicator from "./dateIndicator";
 import DegreeIndicator from "./degreeIndicator";
 import MainButtons from "./mainButtons";
 import WeatherIndicator from "./weatherIndicator";
-
-import styled from "styled-components";
-import FlexItem from "../styled-components/flexItem";
 import MainDisplay from "./mainDisplay";
 
-const MainContainer = styled(FlexItem)`
-  overflow: hidden;
+import styled from "styled-components";
+import InnerContainers from "../styled-components/innerContainers";
+
+const MainContainer = styled(InnerContainers)`
   background-color: var(--bg-primary);
-  text-align: center;
-  height: 100vh;
-  display: flex;
   flex-direction: column;
+  text-align: center;
   padding: var(--ct-padding-top) 0rem var(--ct-padding-bottom);
+  flex: 31.875vw;
 `;
 
 const MainWindow = () => {
   return (
-    <MainContainer flex="31.875vw" yAlign>
+    <MainContainer>
       <MainButtons />
       <MainDisplay />
       <WeatherIndicator />
