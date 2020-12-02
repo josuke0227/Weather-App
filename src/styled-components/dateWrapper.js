@@ -2,8 +2,8 @@ import styled from "styled-components";
 import UnitWrapper from "../styled-components/unitWrapper";
 
 const DateWrapper = styled(UnitWrapper)`
-  font-size: 18px;
-  font-weight: 500;
+  font-size: ${(props) => props.fontSize};
+  font-weight: ${(props) => props.fontWeight};
   color: var(--tx-tirtary);
 `;
 

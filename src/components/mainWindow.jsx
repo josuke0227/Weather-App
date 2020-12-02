@@ -17,15 +17,21 @@ const MainContainer = styled(InnerContainers)`
   flex: 31.875vw;
 `;
 
-const MainWindow = () => {
+const MainWindow = ({ weather, currentLocation }) => {
   return (
     <MainContainer>
       <MainButtons />
-      <MainDisplay />
-      <WeatherIndicator />
-      <DegreeIndicator />
-      <DateIndicator />
-      <LocationIndicator />
+      <MainDisplay code={weather.weather_state_abbr} />
+      <WeatherIndicator weatherState={weather.weather_state_name} />
+      <DegreeIndicator currentTemp={weather.the_temp} />
+
+      <DateIndicator
+        date={weather.applicable_date}
+        fontSize="18px"
+        fontWeight="500"
+        text="Today ・"
+      />
+      <LocationIndicator location={currentLocation.title} />
     </MainContainer>
   );
 };

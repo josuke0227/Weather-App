@@ -9,9 +9,11 @@ const IconSpan = styled.span`
       ? "var(--icon-red)"
       : "var(--winbnb-black)"};
   font-size: ${(props) => (props.size === "md-18" ? "18px" : "24px")};
+  transform:rotate(${(props) => props.deg}deg);
+}
 `;
 
-const Icon = ({ name, id, size, clickEvent, color }) => {
+const Icon = ({ name, id, size, clickEvent, color, deg }) => {
   return (
     <IconSpan
       className="material-icons"
@@ -19,6 +21,7 @@ const Icon = ({ name, id, size, clickEvent, color }) => {
       id={id}
       onClick={clickEvent}
       color={color}
+      deg={deg}
     >
       {name}
     </IconSpan>

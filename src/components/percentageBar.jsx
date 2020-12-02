@@ -15,13 +15,13 @@ const Gage = styled.div`
 `;
 
 const Ratio = styled.div`
-  width: 50%;
+  width: ${(props) => props.percentage}%;
   height: 100%;
   border-radius: 80px;
   background-color: #ffec65;
 `;
 
-const PercentageBar = () => {
+const PercentageBar = ({ percentage }) => {
   return (
     <BarContainer>
       <FlexContainer style={{ width: "100%" }}>
@@ -30,7 +30,7 @@ const PercentageBar = () => {
         <div style={{ flex: "1", textAlign: "end" }}>100</div>
       </FlexContainer>
       <Gage>
-        <Ratio></Ratio>
+        <Ratio percentage={percentage}></Ratio>
       </Gage>
     </BarContainer>
   );

@@ -16,13 +16,34 @@ const CompusWrapper = styled(RoundButton)`
   padding: 8px;
 `;
 
-const WindowDirectionIndicator = () => {
+const WindowDirectionIndicator = ({ direction }) => {
+  const windDir = {
+    N: "0",
+    NNE: "22.5",
+    NE: "45",
+    ENE: "67.5",
+    E: "90",
+    ESE: "112.5",
+    SE: "135",
+    SSE: "157.5",
+    S: "180",
+    SSW: "202.5",
+    SW: "225",
+    WSW: "247.5",
+    W: "270",
+    WNW: "292.5",
+    NW: "315",
+    NNW: "337.5",
+  };
+
+  const deg = windDir[direction];
+
   return (
     <div className="direction-container">
       <CompusWrapper>
-        <Icon name="navigation" size="md-18" />
+        <Icon name="navigation" size="md-18" deg={deg} />
       </CompusWrapper>
-      <DirectionWrapper>WSW</DirectionWrapper>
+      <DirectionWrapper>{direction}</DirectionWrapper>
     </div>
   );
 };

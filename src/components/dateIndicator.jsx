@@ -1,23 +1,21 @@
 import React from "react";
 import styled from "styled-components";
 import FlexItem from "../styled-components/flexItem";
-import UnitWrapper from "../styled-components/unitWrapper";
+import DateWrapper from "../styled-components/dateWrapper";
 
-const DateWindow = styled(FlexItem)`
-  padding-top: 5.68%;
-`;
+const DateIndicator = ({ text, date, fontSize, fontWeight }) => {
+  const dateArr = new Date(date).toString().split(" ");
+  const dateToday = dateArr[0];
+  const month = dateArr[1];
+  const day = new Date(date).getDate();
 
-const DateWrapper = styled(UnitWrapper)`
-  font-size: 18px;
-  font-weight: 500;
-  color: var(--tx-tirtary);
-`;
-
-const DateIndicator = () => {
   return (
-    <DateWindow flex="8.83vh">
-      <DateWrapper>Today ・ Sat, 28, Nov</DateWrapper>
-    </DateWindow>
+    <FlexItem flex="8.83vh">
+      <DateWrapper fontSize={fontSize} fontWeight={fontWeight}>
+        {text}
+        {`${dateToday}, ${day} ${month}`}
+      </DateWrapper>
+    </FlexItem>
   );
 };
 

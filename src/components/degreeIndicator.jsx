@@ -11,11 +11,12 @@ const DegreeWindow = styled(FlexContainer)`
   flex: 25.95vh;
 `;
 
-const DegreeIndicator = () => {
+const DegreeIndicator = ({ currentTemp }) => {
   return (
     <DegreeWindow>
       <DegreeWrapper>
-        15<UnitWrapper>&#8451;</UnitWrapper>
+        {Math.floor(currentTemp)}
+        <UnitWrapper>&#8451;</UnitWrapper>
       </DegreeWrapper>
     </DegreeWindow>
   );

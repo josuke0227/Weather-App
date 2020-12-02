@@ -12,10 +12,10 @@ const WeatherText = styled(UnitWrapper)`
   font-weight: 600;
 `;
 
-const WeatherIndicator = () => {
+const WeatherIndicator = ({ weatherState }) => {
   return (
     <WeatherWindow flex="7.595vh">
-      <WeatherText>Shower</WeatherText>
+      <WeatherText>{weatherState}</WeatherText>
     </WeatherWindow>
   );
 };

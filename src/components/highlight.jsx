@@ -15,12 +15,12 @@ const HighLightContainer = styled.div`
   grid-gap: 3rem;
 `;
 
-const Highlight = () => {
+const Highlight = ({ weatherToday }) => {
   return (
     <div id="highlight">
       <HeadderWrapper className="mb-1">Today's Highlights</HeadderWrapper>
       <HighLightContainer>
-        <HighlightPanels />
+        <HighlightPanels weather={weatherToday} />
       </HighLightContainer>
     </div>
   );
