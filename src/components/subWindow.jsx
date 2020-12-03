@@ -14,11 +14,16 @@ const SubContainer = styled(InnerContainers)`
   flex: 68.125vw;
 `;
 
-const SubWindow = ({ weather, weatherToday }) => {
+const SubWindow = ({
+  weather,
+  weatherToday,
+  onUnitButtonClick,
+  currentUnit,
+}) => {
   return (
     <SubContainer>
-      <UnitToggler />
-      <FiveDaysForecast weather={weather} />
+      <UnitToggler onUnitButtonClick={onUnitButtonClick} unit={currentUnit} />
+      <FiveDaysForecast weather={weather} unit={currentUnit} />
       <Highlight weatherToday={weatherToday} />
       <Footer />
     </SubContainer>

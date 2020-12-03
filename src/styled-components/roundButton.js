@@ -7,6 +7,7 @@ const RoundButton = styled(ButtonStyle)`
   height: 2.5rem;
   border-radius: 100%;
   padding: 0.625rem;
+  margin-left: ${(props) => props.margin};
 `;
 
 export default RoundButton;

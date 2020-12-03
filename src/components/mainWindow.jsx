@@ -8,30 +8,62 @@ import MainDisplay from "./mainDisplay";
 
 import styled from "styled-components";
 import InnerContainers from "../styled-components/innerContainers";
+import SearchWindow from "./searchWindow";
 
 const MainContainer = styled(InnerContainers)`
   background-color: var(--bg-primary);
   flex-direction: column;
   text-align: center;
-  padding: var(--ct-padding-top) 0rem var(--ct-padding-bottom);
+  padding: ${(props) =>
+    props.isOpened
+      ? "1.9vh 2vw;"
+      : "var(--ct-padding-top) 0rem var(--ct-padding-bottom);"} 
   flex: 31.875vw;
 `;
 
-const MainWindow = ({ weather, currentLocation }) => {
+const MainWindow = ({
+  query,
+  weather,
+  currentLocation,
+  searchResult,
+  currentUnit,
+  isOpened,
+  onOpenButonClick,
+  onInputChange,
+  onSearchButtonClick,
+  onGpsButtonClick,
+  onCityNameClick,
+  onCloseButtonClick,
+}) => {
   return (
-    <MainContainer>
-      <MainButtons />
-      <MainDisplay code={weather.weather_state_abbr} />
-      <WeatherIndicator weatherState={weather.weather_state_name} />
-      <DegreeIndicator currentTemp={weather.the_temp} />
-
-      <DateIndicator
-        date={weather.applicable_date}
-        fontSize="18px"
-        fontWeight="500"
-        text="Today ・"
-      />
-      <LocationIndicator location={currentLocation.title} />
+    <MainContainer isOpened={isOpened}>
+      {isOpened === true ? (
+        <SearchWindow
+          query={query}
+          onCityNameClick={onCityNameClick}
+          onInputChange={onInputChange}
+          onCloseButtonClick={onCloseButtonClick}
+          onSearchButtonClick={onSearchButtonClick}
+          searchResult={searchResult}
+        />
+      ) : (
+        <React.Fragment>
+          <MainButtons
+            onOpenButonClick={onOpenButonClick}
+            onGpsButtonClick={onGpsButtonClick}
+          />
+          <MainDisplay code={weather.weather_state_abbr} />
+          <WeatherIndicator weatherState={weather.weather_state_name} />
+          <DegreeIndicator currentTemp={weather.the_temp} unit={currentUnit} />
+          <DateIndicator
+            date={weather.applicable_date}
+            fontSize="18px"
+            fontWeight="500"
+            text="Today ・"
+          />
+          <LocationIndicator location={currentLocation.title} />
+        </React.Fragment>
+      )}
     </MainContainer>
   );
 };

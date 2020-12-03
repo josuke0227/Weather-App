@@ -13,6 +13,7 @@ const CompusWrapper = styled(RoundButton)`
   width: 4vh;
   height: 4vh;
   margin-right: 0.18rem;
+  cursor: unset;
   padding: 8px;
 `;
 

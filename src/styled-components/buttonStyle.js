@@ -8,6 +8,7 @@ const ButtonStyle = styled.div`
   text-align: center;
   font-size: 16px;
   font-weight: 500;
+  cursor: pointer;
 `;
 
 export default ButtonStyle;
