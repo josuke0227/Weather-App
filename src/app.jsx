@@ -33,6 +33,7 @@ class App extends Component {
             params: { lattlong: `${lat},${long}` },
           })
           .then((response) => {
+            console.log(response);
             const currentLocation = response.data[0];
             this.setState({ currentLocation });
 

@@ -21,10 +21,12 @@ const FormWrapper = styled(FlexItem)`
 `;
 
 const StyledInput = styled.input`
-  padding: 0 0.5rem;
+  background: url(${(props) => props.icon}) no-repeat;
+  background-position: left;
+  background-position-x: 5%;
+  padding: 0 2.5rem;
   height: 4.9vh;
   width: 100%;
-  background: var(--bg-primary);
   border: 1px solid var(--tx-primary);
   color: var(--tx-primary);
   :focus {
@@ -97,7 +99,7 @@ class SearchWindow extends Component {
               <StyledInput
                 value={query}
                 type="text"
-                placeholder="search location"
+                placeholder="Search Location"
                 icon={SearchIcon}
                 onChange={onInputChange}
               />
