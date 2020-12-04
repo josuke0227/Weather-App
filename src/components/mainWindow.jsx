@@ -34,6 +34,8 @@ const MainWindow = ({
   onGpsButtonClick,
   onCityNameClick,
   onCloseButtonClick,
+  onChoiceClick,
+  choices,
 }) => {
   return (
     <MainContainer isOpened={isOpened}>
@@ -45,6 +47,8 @@ const MainWindow = ({
           onCloseButtonClick={onCloseButtonClick}
           onSearchButtonClick={onSearchButtonClick}
           searchResult={searchResult}
+          choices={choices}
+          onChoiceClick={onChoiceClick}
         />
       ) : (
         <React.Fragment>

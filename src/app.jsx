@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { trackPromise } from "react-promise-tracker";
-
+import areas from "./components/constants/areas";
 import styled from "styled-components";
 import MyLoader from "./components/myLoader";
 import metaWeather from "./api/metaWeather";
@@ -26,6 +26,7 @@ class App extends Component {
       newLocation: "",
       searchResult: "",
       newFiveDaysWeather: "",
+      choices: "",
     };
 
     window.navigator.geolocation.getCurrentPosition(
@@ -69,6 +70,18 @@ class App extends Component {
 
   onInputChange = (e) => {
     const query = e.target.value;
+    trackPromise(
+      metaWeather
+        .get("api/location/search/", {
+          params: { query: query },
+        })
+        .then((response) => {
+          const choices = response.data;
+          this.setState({ choices });
+        })
+        .catch((error) => console.log(error)),
+      areas.search
+    );
     this.setState({ query });
   };
 
@@ -79,7 +92,7 @@ class App extends Component {
   };
 
   onCloseButtonClick = () => {
-    this.setState({ isOpened: false, searchResult: "" });
+    this.setState({ isOpened: false, choices: "", query: "" });
   };
 
   onGpsButtonClick = () => {
@@ -90,7 +103,12 @@ class App extends Component {
     console.log(city);
     const woeid = city.woeid;
     this.setNewForecast(woeid);
-    this.setState({ newLocation: city, isOpened: false, searchResult: "" });
+    this.setState({ newLocation: city, isOpened: false, query: "" });
+  };
+
+  onChoiceClick = (cityName) => {
+    const query = cityName;
+    this.setState({ query, choices: "" });
   };
 
   getLocationChoices = (query) => {
@@ -100,9 +118,7 @@ class App extends Component {
           params: { query: query },
         })
         .then((response) => {
-          if (!response.data.length) console.log("no place matched");
           const searchResult = response.data;
-          console.log(response.data);
           this.setState({ searchResult });
         })
         .catch((error) => console.log(error))
@@ -117,7 +133,8 @@ class App extends Component {
           const newFiveDaysWeather = response.data.consolidated_weather;
           this.setState({ newFiveDaysWeather });
         })
-        .catch((error) => console.log(error))
+        .catch((error) => console.log(error)),
+      areas.all
     );
   };
 
@@ -133,10 +150,16 @@ class App extends Component {
     if (this.state.currentLocation && this.state.fiveDaysWeather) {
       return (
         <React.Fragment>
-          <LoaderIndicator bgColor="rgba(0, 0, 0, 0.2)" />
+          <LoaderIndicator
+            name="Puff"
+            bgColor="rgba(0, 0, 0, 0.2)"
+            position="absolute"
+            area={areas.all}
+          />
           <Container>
             <React.Fragment>
               <MainWindow
+                choices={this.state.choices}
                 query={this.state.query}
                 currentUnit={this.state.unit}
                 currentLocation={location}
@@ -149,6 +172,7 @@ class App extends Component {
                 onSearchButtonClick={this.onSearchButtonClick}
                 onGpsButtonClick={this.onGpsButtonClick}
                 onCityNameClick={this.onCityNameClick}
+                onChoiceClick={this.onChoiceClick}
               />
               <SubWindow
                 weather={weather}
@@ -161,7 +185,14 @@ class App extends Component {
         </React.Fragment>
       );
     } else {
-      return <MyLoader bgColor="var(--bg-secondary)" />;
+      return (
+        <MyLoader
+          name="Puff"
+          position="absolute"
+          bgColor="var(--bg-secondary)"
+          text="Getting Weather Info..."
+        />
+      );
     }
   }
 }
