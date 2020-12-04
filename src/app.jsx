@@ -1,8 +1,12 @@
 import React, { Component } from "react";
+import { trackPromise } from "react-promise-tracker";
+
 import styled from "styled-components";
+import MyLoader from "./components/myLoader";
 import metaWeather from "./api/metaWeather";
 import MainWindow from "./components/mainWindow";
 import SubWindow from "./components/subWindow";
+import LoaderIndicator from "./components/common/LoaderIndicator";
 
 const Container = styled.main`
   display: flex;
@@ -28,16 +32,15 @@ class App extends Component {
       (response) => {
         let lat = response.coords.latitude;
         let long = response.coords.longitude;
+
         metaWeather
           .get("api/location/search/", {
             params: { lattlong: `${lat},${long}` },
           })
           .then((response) => {
-            console.log(response);
             const currentLocation = response.data[0];
-            this.setState({ currentLocation });
-
             const woeid = currentLocation.woeid;
+            this.setState({ currentLocation });
             metaWeather
               .get(`api/location/${woeid}/`)
               .then((response) => {
@@ -49,8 +52,7 @@ class App extends Component {
           .catch((error) => console.log(error));
       },
       (error) => {
-        let errorMEssage = error.message;
-        this.setState({ errorMEssage });
+        alert(error.message);
       }
     );
   }
@@ -92,27 +94,31 @@ class App extends Component {
   };
 
   getLocationChoices = (query) => {
-    metaWeather
-      .get("api/location/search/", {
-        params: { query: query },
-      })
-      .then((response) => {
-        if (!response.data.length) console.log("no place matched");
-        const searchResult = response.data;
-        console.log(response.data);
-        this.setState({ searchResult });
-      })
-      .catch((error) => console.log(error));
+    trackPromise(
+      metaWeather
+        .get("api/location/search/", {
+          params: { query: query },
+        })
+        .then((response) => {
+          if (!response.data.length) console.log("no place matched");
+          const searchResult = response.data;
+          console.log(response.data);
+          this.setState({ searchResult });
+        })
+        .catch((error) => console.log(error))
+    );
   };
 
   setNewForecast = (woeid) => {
-    metaWeather
-      .get(`api/location/${woeid}/`)
-      .then((response) => {
-        const newFiveDaysWeather = response.data.consolidated_weather;
-        this.setState({ newFiveDaysWeather });
-      })
-      .catch((error) => console.log(error));
+    trackPromise(
+      metaWeather
+        .get(`api/location/${woeid}/`)
+        .then((response) => {
+          const newFiveDaysWeather = response.data.consolidated_weather;
+          this.setState({ newFiveDaysWeather });
+        })
+        .catch((error) => console.log(error))
+    );
   };
 
   render() {
@@ -124,36 +130,39 @@ class App extends Component {
       ? this.state.currentLocation
       : this.state.newLocation;
 
-    return (
-      <Container>
-        {this.state.currentLocation && this.state.fiveDaysWeather ? (
-          <React.Fragment>
-            <MainWindow
-              query={this.state.query}
-              currentUnit={this.state.unit}
-              currentLocation={location}
-              searchResult={this.state.searchResult}
-              weather={weather[0]}
-              isOpened={this.state.isOpened}
-              onOpenButonClick={this.onOpenButonClick}
-              onCloseButtonClick={this.onCloseButtonClick}
-              onInputChange={this.onInputChange}
-              onSearchButtonClick={this.onSearchButtonClick}
-              onGpsButtonClick={this.onGpsButtonClick}
-              onCityNameClick={this.onCityNameClick}
-            />
-            <SubWindow
-              weather={weather}
-              weatherToday={weather[0]}
-              onUnitButtonClick={this.onUnitButtonClick}
-              currentUnit={this.state.unit}
-            />
-          </React.Fragment>
-        ) : (
-          <h1>loading...</h1>
-        )}
-      </Container>
-    );
+    if (this.state.currentLocation && this.state.fiveDaysWeather) {
+      return (
+        <React.Fragment>
+          <LoaderIndicator bgColor="rgba(0, 0, 0, 0.2)" />
+          <Container>
+            <React.Fragment>
+              <MainWindow
+                query={this.state.query}
+                currentUnit={this.state.unit}
+                currentLocation={location}
+                searchResult={this.state.searchResult}
+                weather={weather[0]}
+                isOpened={this.state.isOpened}
+                onOpenButonClick={this.onOpenButonClick}
+                onCloseButtonClick={this.onCloseButtonClick}
+                onInputChange={this.onInputChange}
+                onSearchButtonClick={this.onSearchButtonClick}
+                onGpsButtonClick={this.onGpsButtonClick}
+                onCityNameClick={this.onCityNameClick}
+              />
+              <SubWindow
+                weather={weather}
+                weatherToday={weather[0]}
+                onUnitButtonClick={this.onUnitButtonClick}
+                currentUnit={this.state.unit}
+              />
+            </React.Fragment>
+          </Container>
+        </React.Fragment>
+      );
+    } else {
+      return <MyLoader bgColor="var(--bg-secondary)" />;
+    }
   }
 }
 

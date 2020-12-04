@@ -7,7 +7,7 @@ import Highlight from "./highlight";
 import InnerContainers from "../styled-components/innerContainers";
 
 const SubContainer = styled(InnerContainers)`
-  background-color: var(--bg-seconday);
+  background-color: var(--bg-secondary);
   flex-direction: column;
   margin: auto;
   padding: 0 9.625rem 0 7.6875rem;

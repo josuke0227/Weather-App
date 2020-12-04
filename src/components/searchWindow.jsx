@@ -50,6 +50,7 @@ const ResultPanel = styled(FlexContainer)`
   width: 27.8vw;
   padding: 1rem;
   margin-bottom: 1rem;
+  cursor: "pointer";
   &:hover {
     border: 1px solid var(--tx-secondary);
   }
@@ -113,7 +114,6 @@ class SearchWindow extends Component {
           style={{
             overflowY: "scroll",
             marginTop: "1rem",
-            cursor: "pointer",
             color: "var(--tx-primary)",
             textAlign: "start",
           }}
