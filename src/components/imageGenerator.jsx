@@ -12,9 +12,19 @@ import Thunderstorm from "../img/Thunderstorm.png";
 import styled from "styled-components";
 
 const WeatherImage = styled.img`
-  padding: ${(props) => props.padding};
+  margin-top: ${(props) => props.marginTop};
   width: ${(props) => props.width};
   height: ${(props) => props.height};
+
+  @media (max-width: 960px) {
+    width: 7vw;
+    height: 7vh;
+  }
+
+  @media (max-width: 600px) {
+    width: 15vw;
+    height: 10vh;
+  }
 `;
 
 const hashmap = {
@@ -30,12 +40,12 @@ const hashmap = {
   c: Clear,
 };
 
-const ImageGenerator = ({ code, padding, width, height }) => {
+const ImageGenerator = ({ code, marginTop, width, height }) => {
   return (
     <WeatherImage
       src={hashmap[code]}
       alt=""
-      padding={padding}
+      marginTop={marginTop}
       width={width}
       height={height}
     />

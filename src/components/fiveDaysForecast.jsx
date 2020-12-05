@@ -19,6 +19,30 @@ const FiveDaysContainer = styled.div`
   grid-template-rows: 19.3vh;
   grid-column-gap: 1.625rem;
   padding-bottom: 2rem;
+
+  @media (max-width: 1100px) {
+    grid-template-columns: repeat(5, 10vw);
+    grid-column-gap: 1rem;
+  }
+
+  @media (max-width: 960px) {
+    grid-template-columns: repeat(5, 12vw);
+    grid-column-gap: 0.5rem;
+  }
+
+  @media (max-width: 860px) {
+    grid-template-columns: repeat(5, 17vw);
+    grid-column-gap: 0.5rem;
+  }
+
+  @media (max-width: 600px) {
+    height: 100vh;
+    padding: 2rem;
+
+    grid-template-columns: repeat(2, auto);
+    grid-gap: 2rem;
+    grid-template-rows: repeat(3, 24vh);
+  }
 `;
 
 const MinTempWrapper = styled(FlexItem)`
@@ -84,7 +108,10 @@ class FiveDaysForecast extends Component {
                 height="7vh"
               />
             </FlexItem>
-            <FlexContainer xAlign style={{ flex: "1" }}>
+            <FlexContainer
+              xAlign
+              style={{ flex: "1", justifyContent: "center" }}
+            >
               {this.renderTemp(
                 this.props.unit,
                 weather.max_temp,

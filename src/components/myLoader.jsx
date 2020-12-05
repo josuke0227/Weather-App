@@ -14,7 +14,7 @@ const LoaderWrapper = styled.div`
   background-color: ${(props) => props.bgColor};
 `;
 
-const MyLoader = ({ bgColor, position, name, text }) => {
+const MyLoader = ({ bgColor, position, name, text, width, height }) => {
   return (
     <LoaderWrapper bgColor={bgColor} position={position}>
       <h1 style={{ color: "var(--tx-secondary)", marginBottom: "1rem" }}>
@@ -23,8 +23,8 @@ const MyLoader = ({ bgColor, position, name, text }) => {
       <Loader
         type={name}
         color="var(--tx-secondary)"
-        height="100"
-        width="100"
+        height={width}
+        width={height}
         // style={{ paddingLeft: "46vw", paddingTop: "45vh" }}
       />
     </LoaderWrapper>

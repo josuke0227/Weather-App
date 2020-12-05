@@ -9,9 +9,28 @@ import InnerContainers from "../styled-components/innerContainers";
 const SubContainer = styled(InnerContainers)`
   background-color: var(--bg-secondary);
   flex-direction: column;
-  margin: auto;
-  padding: 0 9.625rem 0 7.6875rem;
   flex: 68.125vw;
+
+  @media (max-width: 600px) {
+    height: unset;
+  }
+`;
+
+const FivedaysWrapper = styled.div`
+  margin: auto;
+
+  @media (max-width: 600px) {
+    margin: 0;
+    height: 100vh;
+  }
+`;
+
+const HighlightFooterWrapper = styled.div`
+  margin: auto;
+
+  @media (max-width: 600px) {
+    margin: 2rem 0 0 0;
+  }
 `;
 
 const SubWindow = ({
@@ -21,11 +40,15 @@ const SubWindow = ({
   currentUnit,
 }) => {
   return (
-    <SubContainer>
-      <UnitToggler onUnitButtonClick={onUnitButtonClick} unit={currentUnit} />
-      <FiveDaysForecast weather={weather} unit={currentUnit} />
-      <Highlight weatherToday={weatherToday} />
-      <Footer />
+    <SubContainer id="subcontainer">
+      <FivedaysWrapper>
+        <UnitToggler onUnitButtonClick={onUnitButtonClick} unit={currentUnit} />
+        <FiveDaysForecast weather={weather} unit={currentUnit} />
+      </FivedaysWrapper>
+      <HighlightFooterWrapper>
+        <Highlight weatherToday={weatherToday} />
+        <Footer />
+      </HighlightFooterWrapper>
     </SubContainer>
   );
 };

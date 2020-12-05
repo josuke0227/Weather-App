@@ -11,6 +11,11 @@ import LoaderIndicator from "./components/common/LoaderIndicator";
 const Container = styled.main`
   display: flex;
   overflow: hidden;
+
+  @media (max-width: 860px) {
+    overflow: unset;
+    flex-direction: column;
+  }
 `;
 
 class App extends Component {
@@ -155,32 +160,32 @@ class App extends Component {
             bgColor="rgba(0, 0, 0, 0.2)"
             position="absolute"
             area={areas.all}
+            width="150"
+            height="150"
           />
           <Container>
-            <React.Fragment>
-              <MainWindow
-                choices={this.state.choices}
-                query={this.state.query}
-                currentUnit={this.state.unit}
-                currentLocation={location}
-                searchResult={this.state.searchResult}
-                weather={weather[0]}
-                isOpened={this.state.isOpened}
-                onOpenButonClick={this.onOpenButonClick}
-                onCloseButtonClick={this.onCloseButtonClick}
-                onInputChange={this.onInputChange}
-                onSearchButtonClick={this.onSearchButtonClick}
-                onGpsButtonClick={this.onGpsButtonClick}
-                onCityNameClick={this.onCityNameClick}
-                onChoiceClick={this.onChoiceClick}
-              />
-              <SubWindow
-                weather={weather}
-                weatherToday={weather[0]}
-                onUnitButtonClick={this.onUnitButtonClick}
-                currentUnit={this.state.unit}
-              />
-            </React.Fragment>
+            <MainWindow
+              choices={this.state.choices}
+              query={this.state.query}
+              currentUnit={this.state.unit}
+              currentLocation={location}
+              searchResult={this.state.searchResult}
+              weather={weather[0]}
+              isOpened={this.state.isOpened}
+              onOpenButonClick={this.onOpenButonClick}
+              onCloseButtonClick={this.onCloseButtonClick}
+              onInputChange={this.onInputChange}
+              onSearchButtonClick={this.onSearchButtonClick}
+              onGpsButtonClick={this.onGpsButtonClick}
+              onCityNameClick={this.onCityNameClick}
+              onChoiceClick={this.onChoiceClick}
+            />
+            <SubWindow
+              weather={weather}
+              weatherToday={weather[0]}
+              onUnitButtonClick={this.onUnitButtonClick}
+              currentUnit={this.state.unit}
+            />
           </Container>
         </React.Fragment>
       );
@@ -191,6 +196,8 @@ class App extends Component {
           position="absolute"
           bgColor="var(--bg-secondary)"
           text="Getting Weather Info..."
+          width="150"
+          height="150"
         />
       );
     }

@@ -18,11 +18,15 @@ const StyledInput = styled.input`
   background-position-x: 5%;
   padding: 0 2.5rem;
   height: 4.9vh;
-  width: 20.88vw;
+  width: 80%;
   border: 1px solid var(--tx-primary);
   color: var(--tx-primary);
   :focus {
     outline: none;
+  }
+
+  @media (max-width: 860px) {
+    padding: 0 3.5rem;
   }
 `;
 
@@ -34,7 +38,7 @@ const ChoicesPanelStyle = styled.div`
   border: 1px solid var(--tx-primary);
   padding: 0 1rem 1rem 1rem;
   overflow-y: scroll;
-  width: 20.88vw;
+  width: 80%;
 `;
 
 const ChoiceStyle = styled(FlexContainer)`
@@ -93,6 +97,8 @@ class SearchWindow extends Component {
             position="relative"
             area={areas.search}
             name="ThreeDots"
+            width="50"
+            height="50"
           />
           {choices ? this.renderChoices(choices) : null}
         </ChoicesPanelStyle>

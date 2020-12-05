@@ -13,6 +13,8 @@ const LoaderIndicator = (props) => {
           position={props.position}
           name={props.name}
           text={props.text}
+          width={props.width}
+          height={props.height}
         />
       </React.Fragment>
     )

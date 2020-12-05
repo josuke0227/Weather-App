@@ -19,6 +19,10 @@ const MainContainer = styled(InnerContainers)`
       ? "1.9vh 2vw;"
       : "var(--ct-padding-top) 0rem var(--ct-padding-bottom);"} 
   flex: 31.875vw;
+
+  @media(max-width: 860px){
+    flex: 100vh;
+  }
 `;
 
 const MainWindow = ({
