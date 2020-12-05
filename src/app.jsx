@@ -53,9 +53,9 @@ class App extends Component {
                 const fiveDaysWeather = response.data.consolidated_weather;
                 this.setState({ fiveDaysWeather });
               })
-              .catch((error) => console.log(error));
+              .catch((error) => alert(error));
           })
-          .catch((error) => console.log(error));
+          .catch((error) => alert(error));
       },
       (error) => {
         alert(error.message);
@@ -84,7 +84,7 @@ class App extends Component {
           const choices = response.data;
           this.setState({ choices });
         })
-        .catch((error) => console.log(error)),
+        .catch((error) => alert(error)),
       areas.search
     );
     this.setState({ query });
@@ -126,7 +126,7 @@ class App extends Component {
           const searchResult = response.data;
           this.setState({ searchResult });
         })
-        .catch((error) => console.log(error))
+        .catch((error) => alert(error))
     );
   };
 
@@ -138,7 +138,7 @@ class App extends Component {
           const newFiveDaysWeather = response.data.consolidated_weather;
           this.setState({ newFiveDaysWeather });
         })
-        .catch((error) => console.log(error)),
+        .catch((error) => alert(error)),
       areas.all
     );
   };
