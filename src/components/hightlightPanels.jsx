@@ -1,6 +1,16 @@
 import React from "react";
 import WindowDirectionIndicator from "./windowDirectionIndicator";
 import PercentageBar from "./percentageBar";
+import styled from "styled-components";
+
+const PanelWrapper = styled.div`
+  background-color: var(--bg-primary);
+  color: var(--tx-primary);
+  text-align: center;
+  @media (max-width: 600px) {
+    margin-bottom: 0.5rem;
+  }
+`;
 
 const HighlightPanels = ({ weather }) => {
   const panelContents = [
@@ -35,16 +45,14 @@ const HighlightPanels = ({ weather }) => {
   return (
     <React.Fragment>
       {panelContents.map((content, index) => (
-        <div key={index} className="panel-wrapper">
-          <div className="title-wrapper" flex="1.85vh">
-            {content.title}
-          </div>
+        <PanelWrapper key={index}>
+          <div className="title-wrapper">{content.title}</div>
           <div className="panel-display">
             <div className="panel-degree-wrapper">{content.index}</div>
             <div className="panel-unit-wrapper">{content.unit}</div>
           </div>
           {content.gadget}
-        </div>
+        </PanelWrapper>
       ))}
     </React.Fragment>
   );

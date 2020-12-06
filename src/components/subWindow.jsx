@@ -41,14 +41,16 @@ const SubWindow = ({
 }) => {
   return (
     <SubContainer id="subcontainer">
-      {/* <FivedaysWrapper> */}
-      <UnitToggler onUnitButtonClick={onUnitButtonClick} unit={currentUnit} />
-      <FiveDaysForecast weather={weather} unit={currentUnit} />
-      {/* </FivedaysWrapper> */}
-      {/* <HighlightFooterWrapper> */}
-      <Highlight weatherToday={weatherToday} />
-      <Footer />
-      {/* </HighlightFooterWrapper> */}
+      <div className="contents" style={{ margin: "auto" }}>
+        {/* <FivedaysWrapper> */}
+        <UnitToggler onUnitButtonClick={onUnitButtonClick} unit={currentUnit} />
+        <FiveDaysForecast weather={weather} unit={currentUnit} />
+        {/* </FivedaysWrapper> */}
+        {/* <HighlightFooterWrapper> */}
+        <Highlight weatherToday={weatherToday} />
+        <Footer />
+        {/* </HighlightFooterWrapper> */}
+      </div>
     </SubContainer>
   );
 };
