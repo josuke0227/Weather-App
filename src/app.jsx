@@ -126,7 +126,7 @@ class App extends Component {
           const searchResult = response.data;
           this.setState({ searchResult });
         })
-        .catch((error) => alert(error))
+        .catch((error) => alert(`${error}@getLocationChoices`))
     );
   };
 
@@ -138,7 +138,7 @@ class App extends Component {
           const newFiveDaysWeather = response.data.consolidated_weather;
           this.setState({ newFiveDaysWeather });
         })
-        .catch((error) => alert(error)),
+        .catch((error) => alert(`${error}@ set new forecast`)),
       areas.all
     );
   };
