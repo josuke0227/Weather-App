@@ -16,17 +16,17 @@ const SubContainer = styled(InnerContainers)`
   }
 `;
 
-const FivedaysWrapper = styled.div`
-  margin: auto;
-`;
+// const FivedaysWrapper = styled.div`
+//   margin: auto;
+// `;
 // @media (max-width: 600px) {
 //   margin: 0;
 //   height: 100vh;
 // }
 
-const HighlightFooterWrapper = styled.div`
-  margin: auto;
-`;
+// const HighlightFooterWrapper = styled.div`
+//   margin: auto;
+// `;
 
 // @media (max-width: 600px) {
 //   margin: 2rem 0 0 0;

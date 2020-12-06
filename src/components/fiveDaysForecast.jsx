@@ -39,7 +39,7 @@ const FiveDaysContainer = styled.div`
     height: 100vh;
     padding: 2rem;
 
-    grid-template-columns: repeat(2, 30vw);
+    grid-template-columns: repeat(2, 31.5vw);
     grid-gap: 2rem;
     grid-template-rows: repeat(3, 26vh);
   }
