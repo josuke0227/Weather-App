@@ -53,12 +53,12 @@ class App extends Component {
                 const fiveDaysWeather = response.data.consolidated_weather;
                 this.setState({ fiveDaysWeather });
               })
-              .catch((error) => alert(error));
+              .catch((error) => alert(`${error}@calling API`));
           })
           .catch((error) => alert(error));
       },
       (error) => {
-        alert(error.message);
+        alert(`${error.message}@getCurrentPosition`);
       }
     );
   }
