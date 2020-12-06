@@ -13,7 +13,7 @@ const SubContainer = styled(InnerContainers)`
 
   @media (max-width: 600px) {
     height: 100%;
-    flex: 220vh;
+    flex: 210vh;
   }
 `;
 
