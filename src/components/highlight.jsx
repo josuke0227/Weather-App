@@ -33,7 +33,6 @@ const HighLightContainer = styled.div`
     flex-direction: column;
     padding: 0 2rem;
     grid-gap: 2rem;
-    width: 80vw;
   }
 `;
 

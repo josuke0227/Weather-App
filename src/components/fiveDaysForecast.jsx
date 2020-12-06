@@ -11,6 +11,10 @@ const PanelWrapper = styled(FlexContainer)`
   background-color: var(--bg-primary);
   color: var(--tx-primary);
   text-align: center;
+
+  @media (max-width: 600px) {
+    margin-bottom: 0.5rem;
+  }
 `;
 
 const FiveDaysContainer = styled.div`
@@ -39,9 +43,9 @@ const FiveDaysContainer = styled.div`
     height: 100vh;
     padding: 2rem;
 
-    grid-template-columns: repeat(2, 31.5vw);
+    grid-template-columns: repeat(2, 35vw);
     grid-gap: 2rem;
-    grid-template-rows: repeat(3, 26vh);
+    grid-template-rows: repeat(3, 20vh);
   }
 `;
 
