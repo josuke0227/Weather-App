@@ -12,7 +12,7 @@ const SubContainer = styled(InnerContainers)`
   flex: 68.125vw;
 
   @media (max-width: 600px) {
-    height: unset;
+    height: 100%;
   }
 `;
 
@@ -40,14 +40,14 @@ const SubWindow = ({
 }) => {
   return (
     <SubContainer id="subcontainer">
-      <FivedaysWrapper>
-        <UnitToggler onUnitButtonClick={onUnitButtonClick} unit={currentUnit} />
-        <FiveDaysForecast weather={weather} unit={currentUnit} />
-      </FivedaysWrapper>
-      <HighlightFooterWrapper>
-        <Highlight weatherToday={weatherToday} />
-        <Footer />
-      </HighlightFooterWrapper>
+      {/* <FivedaysWrapper> */}
+      <UnitToggler onUnitButtonClick={onUnitButtonClick} unit={currentUnit} />
+      <FiveDaysForecast weather={weather} unit={currentUnit} />
+      {/* </FivedaysWrapper> */}
+      {/* <HighlightFooterWrapper> */}
+      <Highlight weatherToday={weatherToday} />
+      <Footer />
+      {/* </HighlightFooterWrapper> */}
     </SubContainer>
   );
 };

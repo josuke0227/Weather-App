@@ -39,9 +39,9 @@ const FiveDaysContainer = styled.div`
     height: 100vh;
     padding: 2rem;
 
-    grid-template-columns: repeat(2, auto);
+    grid-template-columns: repeat(2, 30vw);
     grid-gap: 2rem;
-    grid-template-rows: repeat(3, 24vh);
+    grid-template-rows: repeat(3, 26vh);
   }
 `;
 
