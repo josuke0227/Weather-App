@@ -40,9 +40,9 @@ function useCurrentWidth() {
 function styleGenerator(width) {
   if (width > 860 && width <= 960) {
     return {
-      marginTop: "6vh !important",
+      marginTop: "4vh !important",
       width: "20vw !important",
-      height: "25vh !important",
+      height: "35vh !important",
     };
   }
 
