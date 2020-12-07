@@ -56,7 +56,7 @@ function styleGenerator(width) {
 
   if (width <= 600) {
     return {
-      marginTop: "1vh !important",
+      marginTop: "3vh !important",
       width: "45vw !important",
       height: "25vh !important",
     };
