@@ -75,6 +75,9 @@ class App extends Component {
 
   onInputChange = (e) => {
     const query = e.target.value;
+    this.setState({ query });
+
+    if (!query) return;
     trackPromise(
       metaWeather
         .get("api/location/search/", {
@@ -87,7 +90,6 @@ class App extends Component {
         .catch((error) => alert(error)),
       areas.search
     );
-    this.setState({ query });
   };
 
   onSearchButtonClick = (e) => {
