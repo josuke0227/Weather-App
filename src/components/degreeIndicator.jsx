@@ -15,7 +15,7 @@ const DegreeIndicator = ({ currentTemp, unit }) => {
     return (
       <DegreeWindow>
         <DegreeWrapper>
-          {Math.floor(currentTemp)}
+          {Math.round(currentTemp)}
           <UnitWrapper>&#8451;</UnitWrapper>
         </DegreeWrapper>
       </DegreeWindow>
@@ -24,7 +24,7 @@ const DegreeIndicator = ({ currentTemp, unit }) => {
   return (
     <DegreeWindow>
       <DegreeWrapper>
-        {Math.floor(fahrenheitConverter(currentTemp))}
+        {Math.round(fahrenheitConverter(currentTemp))}
         <UnitWrapper>&#8457;</UnitWrapper>
       </DegreeWrapper>
     </DegreeWindow>

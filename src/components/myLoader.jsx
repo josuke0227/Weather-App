@@ -25,7 +25,6 @@ const MyLoader = ({ bgColor, position, name, text, width, height }) => {
         color="var(--tx-secondary)"
         height={width}
         width={height}
-        // style={{ paddingLeft: "46vw", paddingTop: "45vh" }}
       />
     </LoaderWrapper>
   );

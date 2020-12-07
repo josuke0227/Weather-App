@@ -11,25 +11,6 @@ import Snow from "../img/Snow.png";
 import Thunderstorm from "../img/Thunderstorm.png";
 import styled from "styled-components";
 
-// name : w x h
-// formula : w / h
-// portrait : result < 0
-// landscape: result > 0
-
-// thunder-storm: 203 x 235 / 0.86
-// heavy-rain: 203 x 234 / 0.86
-// light-rain: 203 x 234 / 0.86
-// shower: 202 x 234 / 0.86
-// sleet: 202 x 227 / 0.88
-
-// hail: 180 x 200 / 0.9
-
-// clear : 213 x 206 / 1.03 / 45vw, 35vh
-// light-cloud: 221 x 206 / 1.07
-
-// snow: 203 x 169 / 1.201 / 45vw, 35vh
-// heavy-cloud: 203 x 150 / 1.353... / 45vw, 35vh
-
 const WeatherImage = styled.img`
   margin-top: ${(props) => props.marginTop};
   width: ${(props) => props.width};

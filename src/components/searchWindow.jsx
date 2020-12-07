@@ -3,9 +3,18 @@ import Icon from "./common/icon";
 import areas from "./constants/areas";
 import LoaderIndicator from "./common/LoaderIndicator";
 import SearchIcon from "../img/icon/search-icon.svg";
-
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import FlexContainer from "../styled-components/flexContainer";
+
+const moveRight = keyframes`
+  from {
+    margin-left: -5px;
+  }
+
+  to {
+    margin-left: 0px;
+  }
+`;
 
 const CloseButtonWrapper = styled.div`
   text-align: end;
@@ -48,6 +57,8 @@ const ChoiceStyle = styled(FlexContainer)`
   margin-top: 1rem;
   :hover {
     border-bottom: 1px solid var(--tx-primary);
+    animation: ${moveRight} 1s;
+}
   }
 `;
 
@@ -60,8 +71,12 @@ class SearchWindow extends Component {
         </div>
       );
 
-    return choices.map((choice) => (
-      <ChoiceStyle yAlign onClick={() => this.props.onCityNameClick(choice)}>
+    return choices.map((choice, index) => (
+      <ChoiceStyle
+        key={index}
+        yAlign
+        onClick={() => this.props.onCityNameClick(choice)}
+      >
         <span>{choice.title}</span>
         <div>
           <Icon name="chevron_right" color="var(--tx-secondary)" size="18px" />

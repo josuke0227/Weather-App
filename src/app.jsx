@@ -107,7 +107,6 @@ class App extends Component {
   };
 
   onCityNameClick = (city) => {
-    console.log(city);
     const woeid = city.woeid;
     this.setNewForecast(woeid);
     this.setState({ newLocation: city, isOpened: false, query: "" });
@@ -146,15 +145,23 @@ class App extends Component {
   };
 
   render() {
-    let weather = !this.state.newFiveDaysWeather
-      ? this.state.fiveDaysWeather
-      : this.state.newFiveDaysWeather;
+    const {
+      newFiveDaysWeather,
+      fiveDaysWeather,
+      currentLocation,
+      newLocation,
+      choices,
+      query,
+      unit,
+      searchResult,
+      isOpened,
+    } = this.state;
 
-    let location = !this.state.newLocation
-      ? this.state.currentLocation
-      : this.state.newLocation;
+    let weather = !newFiveDaysWeather ? fiveDaysWeather : newFiveDaysWeather;
 
-    if (this.state.currentLocation && this.state.fiveDaysWeather) {
+    let location = !newLocation ? currentLocation : newLocation;
+
+    if (currentLocation && fiveDaysWeather) {
       return (
         <React.Fragment>
           <LoaderIndicator
@@ -167,13 +174,13 @@ class App extends Component {
           />
           <Container>
             <MainWindow
-              choices={this.state.choices}
-              query={this.state.query}
-              currentUnit={this.state.unit}
+              choices={choices}
+              query={query}
+              currentUnit={unit}
               currentLocation={location}
-              searchResult={this.state.searchResult}
+              searchResult={searchResult}
               weather={weather[0]}
-              isOpened={this.state.isOpened}
+              isOpened={isOpened}
               onOpenButonClick={this.onOpenButonClick}
               onCloseButtonClick={this.onCloseButtonClick}
               onInputChange={this.onInputChange}
@@ -186,7 +193,7 @@ class App extends Component {
               weather={weather}
               weatherToday={weather[0]}
               onUnitButtonClick={this.onUnitButtonClick}
-              currentUnit={this.state.unit}
+              currentUnit={unit}
             />
           </Container>
         </React.Fragment>

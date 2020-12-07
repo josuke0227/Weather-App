@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import fahrenheitConverter from "../util/fahrenheitConverter";
+import ImageGenerator from "./imageGenerator";
+import DateIndicator from "./dateIndicator";
 import styled from "styled-components";
 import FlexContainer from "../styled-components/flexContainer";
 import FlexItem from "../styled-components/flexItem";
 import DateWrapper from "../styled-components/dateWrapper";
-import ImageGenerator from "./imageGenerator";
-import DateIndicator from "./dateIndicator";
 
 const PanelWrapper = styled(FlexContainer)`
   background-color: var(--bg-primary);

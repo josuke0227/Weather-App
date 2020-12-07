@@ -2,19 +2,27 @@ import React from "react";
 import MyLoader from "../../components/myLoader";
 import { usePromiseTracker } from "react-promise-tracker";
 
-const LoaderIndicator = (props) => {
-  const { promiseInProgress } = usePromiseTracker({ area: props.area });
+const LoaderIndicator = ({
+  area,
+  bgColor,
+  position,
+  name,
+  text,
+  width,
+  height,
+}) => {
+  const { promiseInProgress } = usePromiseTracker({ area });
 
   return (
     promiseInProgress && (
       <React.Fragment>
         <MyLoader
-          bgColor={props.bgColor}
-          position={props.position}
-          name={props.name}
-          text={props.text}
-          width={props.width}
-          height={props.height}
+          bgColor={bgColor}
+          position={position}
+          name={name}
+          text={text}
+          width={width}
+          height={height}
         />
       </React.Fragment>
     )

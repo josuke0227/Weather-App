@@ -7,9 +7,37 @@ const PanelWrapper = styled.div`
   background-color: var(--bg-primary);
   color: var(--tx-primary);
   text-align: center;
+
   @media (max-width: 600px) {
     margin-bottom: 0.5rem;
   }
+`;
+
+const PanelUnitWrapper = styled.div`
+  font-size: 36px;
+  font-weight: 500;
+  align-self: flex-end;
+`;
+
+const PanelDisplay = styled.div`
+  display: flex;
+  flex: 7.34vh;
+  justify-content: center;
+  padding-bottom: 1.28rem;
+`;
+
+const PanelDigreeWrapper = styled.div`
+  color: var(--tx-primary);
+  font-size: 70px;
+  font-weight: 700;
+`;
+
+const TitleWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  padding-top: 1.53rem;
+  font-size: 16px;
 `;
 
 const HighlightPanels = ({ weather }) => {
@@ -46,11 +74,11 @@ const HighlightPanels = ({ weather }) => {
     <React.Fragment>
       {panelContents.map((content, index) => (
         <PanelWrapper key={index}>
-          <div className="title-wrapper">{content.title}</div>
-          <div className="panel-display">
-            <div className="panel-degree-wrapper">{content.index}</div>
-            <div className="panel-unit-wrapper">{content.unit}</div>
-          </div>
+          <TitleWrapper>{content.title}</TitleWrapper>
+          <PanelDisplay>
+            <PanelDigreeWrapper>{content.index}</PanelDigreeWrapper>
+            <PanelUnitWrapper>{content.unit}</PanelUnitWrapper>
+          </PanelDisplay>
           {content.gadget}
         </PanelWrapper>
       ))}
