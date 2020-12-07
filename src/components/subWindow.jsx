@@ -17,22 +17,6 @@ const SubContainer = styled(InnerContainers)`
   }
 `;
 
-// const FivedaysWrapper = styled.div`
-//   margin: auto;
-// `;
-// @media (max-width: 600px) {
-//   margin: 0;
-//   height: 100vh;
-// }
-
-// const HighlightFooterWrapper = styled.div`
-//   margin: auto;
-// `;
-
-// @media (max-width: 600px) {
-//   margin: 2rem 0 0 0;
-// }
-
 const SubWindow = ({
   weather,
   weatherToday,
@@ -42,14 +26,10 @@ const SubWindow = ({
   return (
     <SubContainer id="subcontainer">
       <div className="contents" style={{ margin: "auto" }}>
-        {/* <FivedaysWrapper> */}
         <UnitToggler onUnitButtonClick={onUnitButtonClick} unit={currentUnit} />
         <FiveDaysForecast weather={weather} unit={currentUnit} />
-        {/* </FivedaysWrapper> */}
-        {/* <HighlightFooterWrapper> */}
         <Highlight weatherToday={weatherToday} />
         <Footer />
-        {/* </HighlightFooterWrapper> */}
       </div>
     </SubContainer>
   );

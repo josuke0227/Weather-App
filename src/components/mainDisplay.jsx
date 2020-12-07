@@ -50,7 +50,15 @@ function styleGenerator(width) {
     return {
       marginTop: "1vh !important",
       width: "45vw !important",
-      height: "35vh !important",
+      height: "25vh !important",
+    };
+  }
+
+  if (width <= 600) {
+    return {
+      marginTop: "1vh !important",
+      width: "45vw !important",
+      height: "25vh !important",
     };
   }
   return {
