@@ -62,8 +62,7 @@ const hashmap = {
 const ImageGenerator = ({ code, marginTop, width, height }) => {
   return (
     <WeatherImage
-      // src={hashmap[code]}
-      src={hashmap.sn}
+      src={hashmap[code]}
       alt=""
       marginTop={marginTop}
       width={width}
